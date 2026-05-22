@@ -194,6 +194,31 @@
   .promo-title{font-size:1.05rem;font-weight:600;margin-bottom:8px}
   .promo-desc{color:var(--muted);font-size:.88rem}
 
+  /* Agenda card */
+  .promo-card--agenda{
+    border-color:rgba(212,175,55,.35);
+    background:linear-gradient(160deg,rgba(212,175,55,.08),#0e0e0e);
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .agenda-badge{
+    font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--gold);background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.25);
+    border-radius:999px;padding:4px 14px;display:inline-block;align-self:flex-start;
+  }
+  .agenda-doctor{display:flex;align-items:center;gap:12px}
+  .agenda-icon{font-size:2rem;line-height:1}
+  .agenda-name{font-size:1.1rem;font-weight:700;color:var(--white);font-family:'Cormorant Garamond',serif;letter-spacing:.5px}
+  .agenda-role{font-size:.78rem;color:var(--gold);font-weight:500;letter-spacing:.1em;text-transform:uppercase}
+  .agenda-details{display:flex;flex-direction:column;gap:10px;border-top:1px solid rgba(212,175,55,.15);padding-top:14px}
+  .agenda-row{display:flex;align-items:flex-start;gap:10px;font-size:.88rem}
+  .agenda-row > span{font-size:1rem;line-height:1.5;flex-shrink:0}
+  .agenda-row div{display:flex;flex-direction:column;gap:2px}
+  .agenda-row strong{color:var(--gold);font-size:.72rem;text-transform:uppercase;letter-spacing:.12em}
+  .agenda-row span{color:var(--white);line-height:1.4}
+  .agenda-how{font-size:.82rem;color:var(--muted);border-top:1px solid rgba(212,175,55,.15);padding-top:12px}
+  .agenda-how strong{color:var(--white)}
+  .agenda-btn{width:100%;justify-content:center;margin-top:4px;font-size:.88rem;padding:12px 18px}
+
   /* Map */
   .map-wrap{
     border-radius:24px;overflow:hidden;border:1px solid var(--line);
@@ -204,14 +229,34 @@
 
   /* QR */
   .qr-card{
-    max-width:400px;margin:0 auto;padding:36px 30px;border-radius:24px;text-align:center;
+    max-width:480px;margin:0 auto;padding:36px 30px;border-radius:24px;text-align:center;
     background:linear-gradient(160deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
     border:1px solid var(--line);backdrop-filter:blur(10px);
   }
-  #qrcode{display:inline-block;padding:18px;background:#fff;border-radius:16px;margin-bottom:18px;box-shadow:0 0 40px rgba(212,175,55,.4)}
-  #qrcode img,#qrcode canvas{display:block;image-rendering:pixelated}
-  .qr-label{font-size:.78rem;color:var(--muted);margin-top:-10px;margin-bottom:16px;letter-spacing:.05em}
-  .qr-url{font-size:.72rem;color:var(--gold);word-break:break-all;margin-bottom:16px;opacity:.8}
+  #qrcode{
+    display:inline-block;
+    padding:28px;
+    background:#ffffff;
+    border-radius:20px;
+    margin-bottom:18px;
+    box-shadow:0 0 50px rgba(212,175,55,.4), 0 0 0 2px rgba(212,175,55,.25);
+    line-height:0;
+  }
+  #qrcode img,#qrcode canvas{
+    display:block;
+    width:320px !important;
+    height:320px !important;
+    image-rendering:pixelated;
+    image-rendering:crisp-edges;
+  }
+  @media (max-width:420px){
+    #qrcode img,#qrcode canvas{width:260px !important;height:260px !important;}
+    #qrcode{padding:22px;}
+  }
+  .qr-hint{
+    font-size:.82rem;color:var(--muted);margin-bottom:16px;
+    display:flex;align-items:center;justify-content:center;gap:6px;
+  }
   .qr-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
   .qr-actions .btn{padding:10px 18px;font-size:.85rem}
 
@@ -223,25 +268,6 @@
   .footer-col a:hover{color:var(--gold-2)}
   .footer-bottom{text-align:center;padding-top:24px;border-top:1px solid rgba(255,255,255,.05);color:var(--muted);font-size:.8rem}
   .footer-bottom .gold-text{font-weight:500}
-
-  /* Agenda Especial */
-  .agenda-card{
-    max-width:600px;margin:0 auto;padding:36px 28px;border-radius:24px;
-    background:linear-gradient(160deg,rgba(212,175,55,.07),rgba(255,255,255,.02));
-    border:1px solid rgba(212,175,55,.35);
-    backdrop-filter:blur(12px);
-    box-shadow:0 0 50px rgba(212,175,55,.12);
-  }
-  .agenda-row{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px;font-size:.95rem;color:var(--white)}
-  .agenda-row:last-of-type{margin-bottom:0}
-  .agenda-icon{font-size:1.3rem;line-height:1;min-width:28px;text-align:center}
-  .agenda-label{font-weight:500;color:var(--gold);font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:3px}
-  .agenda-value{color:var(--white);font-size:.95rem}
-  .agenda-doctor{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--gold-2);margin-bottom:2px}
-  .agenda-specialty{font-size:.82rem;color:var(--muted)}
-  .agenda-cta{margin-top:24px;text-align:center}
-  .agenda-cta .btn{width:100%;justify-content:center;font-size:1rem}
-  .agenda-divider{border:none;border-top:1px solid rgba(212,175,55,.2);margin:20px 0}
 
   /* Reveal animation */
   .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
@@ -259,11 +285,62 @@
   }
   .float-wa svg{width:28px;height:28px}
 
+  /* Modal Consulta */
+  #modal-consulta{
+    position:fixed;inset:0;z-index:200;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+    display:flex!important;align-items:center;justify-content:center;
+    padding:20px;
+    opacity:0;pointer-events:none;
+    transition:opacity .3s;
+  }
+  #modal-consulta.ativo{opacity:1;pointer-events:all;}
+  .modal-box{
+    position:relative;
+    background:linear-gradient(160deg,#1a1a1a,#0f0f0f);
+    border:1px solid rgba(212,175,55,.35);
+    border-radius:24px;
+    padding:32px 28px;
+    max-width:400px;width:100%;
+    box-shadow:0 40px 100px -20px rgba(0,0,0,.9),0 0 0 1px rgba(212,175,55,.1);
+    transform:translateY(20px);
+    transition:transform .35s cubic-bezier(.34,1.56,.64,1);
+  }
+  #modal-consulta.ativo .modal-box{transform:translateY(0);}
+  .modal-close{
+    position:absolute;top:14px;right:16px;
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+    color:var(--muted);font-size:.9rem;
+    width:32px;height:32px;border-radius:50%;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;
+    transition:.2s;font-family:inherit;
+  }
+  .modal-close:hover{background:rgba(212,175,55,.15);color:var(--gold);border-color:var(--gold);}
+  .modal-badge{
+    font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--gold);background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.25);
+    border-radius:999px;padding:5px 14px;display:inline-block;margin-bottom:20px;
+  }
+  .modal-doctor{display:flex;align-items:center;gap:14px;margin-bottom:20px;}
+  .modal-doc-icon{font-size:2.2rem;line-height:1;}
+  .modal-doc-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:700;color:var(--white);letter-spacing:.5px;}
+  .modal-doc-role{font-size:.75rem;color:var(--gold);font-weight:500;letter-spacing:.12em;text-transform:uppercase;margin-top:2px;}
+  .modal-divider{height:1px;background:rgba(212,175,55,.15);margin-bottom:18px;}
+  .modal-rows{display:flex;flex-direction:column;gap:14px;margin-bottom:24px;}
+  .modal-row{display:flex;align-items:flex-start;gap:12px;font-size:.9rem;}
+  .modal-row > span{font-size:1.1rem;line-height:1.5;flex-shrink:0;}
+  .modal-row div{display:flex;flex-direction:column;gap:3px;}
+  .modal-row strong{color:var(--gold);font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;}
+  .modal-row div > span{color:var(--white);line-height:1.5;}
+  .modal-btn{width:100%;justify-content:center;font-size:.9rem;padding:13px 18px;}
+
   @media (max-width:640px){
     section{padding:70px 0}
     .hero-logo{width:120px;height:120px}
     .hero-logo svg{width:70px;height:70px}
     .form-card{padding:28px 20px}
+    .modal-box{padding:26px 20px;}
   }
 </style>
 </head>
@@ -321,7 +398,7 @@
         <div class="action-title">Instagram</div>
         <div class="action-sub">Veja nossos modelos</div>
       </a>
-      <a href="#agendar" class="action-card reveal">
+      <a href="#" class="action-card reveal" onclick="abrirModalConsulta(event)">
         <div class="action-icon">📅</div>
         <div class="action-title">Agendar</div>
         <div class="action-sub">Consulta especializada</div>
@@ -388,7 +465,22 @@
     </div>
     <div class="promo-grid">
       <div class="promo-card reveal"><div class="promo-num">01</div><div class="promo-title">Parcelamento Facilitado</div><div class="promo-desc">Pague em condições especiais e leve o melhor para sua visão.</div></div>
-      <div class="promo-card reveal"><div class="promo-num">02</div><div class="promo-title">Consulta Especializada</div><div class="promo-desc">Profissionais qualificados cuidando da sua saúde ocular.</div></div>
+      <div class="promo-card promo-card--agenda reveal">
+        <div class="agenda-badge">📅 Agenda Especial</div>
+        <div class="agenda-doctor">
+          <span class="agenda-icon">👁️</span>
+          <div>
+            <div class="agenda-name">Dr. Victor Checchi</div>
+            <div class="agenda-role">Oculista</div>
+          </div>
+        </div>
+        <div class="agenda-details">
+          <div class="agenda-row"><span>📆</span><div><strong>Data</strong><span>18 de junho de 2026 · Manhã</span></div></div>
+          <div class="agenda-row"><span>📍</span><div><strong>Local</strong><span>Ao lado da Óticas Precisão<br>Reserva do Iguaçu — PR</span></div></div>
+        </div>
+        <div class="agenda-how">✅ <strong>Como agendar:</strong> Entre em contato pelo WhatsApp</div>
+        <a href="https://wa.me/5542998224827?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20com%20o%20Dr.%20Victor%20Checchi%20no%20dia%2018%2F06." class="btn btn-primary agenda-btn" target="_blank">💬 Agendar pelo WhatsApp</a>
+      </div>
       <div class="promo-card reveal"><div class="promo-num">03</div><div class="promo-title">Armações Modernas</div><div class="promo-desc">Marcas exclusivas e os designs mais atuais do mercado.</div></div>
       <div class="promo-card reveal"><div class="promo-num">04</div><div class="promo-title">Lentes Premium</div><div class="promo-desc">Tecnologia de ponta para conforto e nitidez incomparáveis.</div></div>
       <div class="promo-card reveal"><div class="promo-num">05</div><div class="promo-title">Promoções Exclusivas</div><div class="promo-desc">Ofertas surpreendentes ao longo do mês — fale conosco.</div></div>
@@ -425,6 +517,7 @@
     </div>
     <div class="qr-card reveal">
       <div id="qrcode"></div>
+      <div class="qr-hint">📱 Aponte a câmera do celular diretamente para o QR Code</div>
       <div class="qr-actions">
         <button class="btn btn-primary" onclick="baixarQR()">⬇ Baixar</button>
         <button class="btn btn-ghost" onclick="compartilharQR()">↗ Compartilhar</button>
@@ -464,11 +557,68 @@
   </div>
 </footer>
 
+<!-- MODAL CONSULTA -->
+<div id="modal-consulta" style="display:none" onclick="fecharModalFora(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="fecharModal()" aria-label="Fechar">✕</button>
+    <div class="modal-badge">📅 Agenda Especial</div>
+    <div class="modal-doctor">
+      <span class="modal-doc-icon">👁️</span>
+      <div>
+        <div class="modal-doc-name">Dr. Victor Checchi</div>
+        <div class="modal-doc-role">Oculista</div>
+      </div>
+    </div>
+    <div class="modal-divider"></div>
+    <div class="modal-rows">
+      <div class="modal-row">
+        <span>📆</span>
+        <div>
+          <strong>Data</strong>
+          <span>18 de junho de 2026 · Manhã</span>
+        </div>
+      </div>
+      <div class="modal-row">
+        <span>📍</span>
+        <div>
+          <strong>Local</strong>
+          <span>Ao lado da Óticas Precisão<br>Reserva do Iguaçu — PR</span>
+        </div>
+      </div>
+      <div class="modal-row">
+        <span>✅</span>
+        <div>
+          <strong>Como agendar</strong>
+          <span>Entre em contato pelo WhatsApp</span>
+        </div>
+      </div>
+    </div>
+    <a href="https://wa.me/5542998224827?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20com%20o%20Dr.%20Victor%20Checchi%20no%20dia%2018%2F06." target="_blank" class="btn btn-primary modal-btn">💬 Agendar pelo WhatsApp</a>
+  </div>
+</div>
+
 <a href="https://wa.me/554299712393" class="float-wa" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.4 12-12 0-3.2-1.2-6.2-3.5-8.3zM12 22c-1.8 0-3.6-.5-5.2-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A10 10 0 0 1 2 12C2 6.5 6.5 2 12 2s10 4.5 10 10-4.5 10-10 10zm5.5-7.5c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.2c-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.6 0-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1 2.9 1.2 3.1c.2.2 2 3.1 4.9 4.3 2.9 1.2 2.9.8 3.4.8.5-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>
 </a>
 
 <script>
+  // Modal Consulta
+  const modalConsulta = document.getElementById('modal-consulta');
+  function abrirModalConsulta(e) {
+    e.preventDefault();
+    modalConsulta.style.display = 'flex';
+    requestAnimationFrame(() => modalConsulta.classList.add('ativo'));
+    document.body.style.overflow = 'hidden';
+  }
+  function fecharModal() {
+    modalConsulta.classList.remove('ativo');
+    setTimeout(() => { modalConsulta.style.display = 'none'; document.body.style.overflow = ''; }, 300);
+  }
+  function fecharModalFora(e) {
+    if (e.target === modalConsulta) fecharModal();
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharModal(); });
+
   document.getElementById('ano').textContent = new Date().getFullYear();
 
   // Reveal on scroll
@@ -495,9 +645,9 @@
   const qrEl = document.getElementById('qrcode');
 
   const qr = new QRCode(qrEl, {
-    text: SITE_URL, width: 220, height: 220,
-    colorDark: '#0a0a0a', colorLight: '#ffffff',
-    correctLevel: QRCode.CorrectLevel.H
+    text: SITE_URL, width: 480, height: 480,
+    colorDark: '#000000', colorLight: '#ffffff',
+    correctLevel: QRCode.CorrectLevel.M
   });
 
   function waitQR(cb) {
