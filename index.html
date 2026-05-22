@@ -204,12 +204,14 @@
 
   /* QR */
   .qr-card{
-    max-width:340px;margin:0 auto;padding:30px;border-radius:24px;text-align:center;
+    max-width:400px;margin:0 auto;padding:36px 30px;border-radius:24px;text-align:center;
     background:linear-gradient(160deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
     border:1px solid var(--line);backdrop-filter:blur(10px);
   }
-  #qrcode{display:inline-block;padding:14px;background:#fff;border-radius:14px;margin-bottom:18px;box-shadow:0 0 30px rgba(212,175,55,.3)}
-  #qrcode img,#qrcode canvas{display:block}
+  #qrcode{display:inline-block;padding:18px;background:#fff;border-radius:16px;margin-bottom:18px;box-shadow:0 0 40px rgba(212,175,55,.4)}
+  #qrcode img,#qrcode canvas{display:block;image-rendering:pixelated}
+  .qr-label{font-size:.78rem;color:var(--muted);margin-top:-10px;margin-bottom:16px;letter-spacing:.05em}
+  .qr-url{font-size:.72rem;color:var(--gold);word-break:break-all;margin-bottom:16px;opacity:.8}
   .qr-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
   .qr-actions .btn{padding:10px 18px;font-size:.85rem}
 
@@ -221,6 +223,25 @@
   .footer-col a:hover{color:var(--gold-2)}
   .footer-bottom{text-align:center;padding-top:24px;border-top:1px solid rgba(255,255,255,.05);color:var(--muted);font-size:.8rem}
   .footer-bottom .gold-text{font-weight:500}
+
+  /* Agenda Especial */
+  .agenda-card{
+    max-width:600px;margin:0 auto;padding:36px 28px;border-radius:24px;
+    background:linear-gradient(160deg,rgba(212,175,55,.07),rgba(255,255,255,.02));
+    border:1px solid rgba(212,175,55,.35);
+    backdrop-filter:blur(12px);
+    box-shadow:0 0 50px rgba(212,175,55,.12);
+  }
+  .agenda-row{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px;font-size:.95rem;color:var(--white)}
+  .agenda-row:last-of-type{margin-bottom:0}
+  .agenda-icon{font-size:1.3rem;line-height:1;min-width:28px;text-align:center}
+  .agenda-label{font-weight:500;color:var(--gold);font-size:.78rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:3px}
+  .agenda-value{color:var(--white);font-size:.95rem}
+  .agenda-doctor{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:var(--gold-2);margin-bottom:2px}
+  .agenda-specialty{font-size:.82rem;color:var(--muted)}
+  .agenda-cta{margin-top:24px;text-align:center}
+  .agenda-cta .btn{width:100%;justify-content:center;font-size:1rem}
+  .agenda-divider{border:none;border-top:1px solid rgba(212,175,55,.2);margin:20px 0}
 
   /* Reveal animation */
   .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
@@ -271,7 +292,7 @@
     <div class="hero-buttons">
       <a href="https://wa.me/554299712393" class="btn btn-primary">💬 WhatsApp</a>
       <a href="#agendar" class="btn btn-ghost">📅 Agendar Consulta</a>
-      <a href="https://www.instagram.com/oticaprecisaoreserva/" class="btn btn-ghost">📸 Instagram</a>
+      <a href="https://www.instagram.com/oticaprecisao/" class="btn btn-ghost">📸 Instagram</a>
     </div>
   </div>
 </header>
@@ -295,7 +316,7 @@
         <div class="action-title">Como Chegar</div>
         <div class="action-sub">Ver no mapa</div>
       </a>
-      <a href="https://www.instagram.com/oticaprecisaoreserva/" class="action-card reveal">
+      <a href="https://www.instagram.com/oticaprecisao/" class="action-card reveal">
         <div class="action-icon">📸</div>
         <div class="action-title">Instagram</div>
         <div class="action-sub">Veja nossos modelos</div>
@@ -424,7 +445,7 @@
         <h4>Contato</h4>
         <a href="https://wa.me/554299712393">WhatsApp: (42) 9971-2393</a>
         <a href="tel:+554299712393">Telefone: (42) 9971-2393</a>
-        <a href="https://www.instagram.com/oticaprecisaoreserva/">Instagram</a>
+        <a href="https://www.instagram.com/oticaprecisao/">Instagram</a>
       </div>
       <div class="footer-col">
         <h4>Endereço</h4>
