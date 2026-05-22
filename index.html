@@ -253,6 +253,16 @@
     #qrcode img,#qrcode canvas{width:260px !important;height:260px !important;}
     #qrcode{padding:22px;}
   }
+  .qr-url{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:.78rem;color:var(--gold);
+    background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.2);
+    border-radius:999px;padding:6px 14px;
+    text-decoration:none;margin-bottom:14px;
+    transition:.25s;letter-spacing:.01em;
+  }
+  .qr-url:hover{background:rgba(212,175,55,.16);border-color:var(--gold);}
+  .qr-url svg{opacity:.7;flex-shrink:0;}
   .qr-hint{
     font-size:.82rem;color:var(--muted);margin-bottom:16px;
     display:flex;align-items:center;justify-content:center;gap:6px;
@@ -479,7 +489,7 @@
           <div class="agenda-row"><span>📍</span><div><strong>Local</strong><span>Ao lado da Óticas Precisão<br>Reserva do Iguaçu — PR</span></div></div>
         </div>
         <div class="agenda-how">✅ <strong>Como agendar:</strong> Entre em contato pelo WhatsApp</div>
-        <a href="https://wa.me/5542998224827?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20com%20o%20Dr.%20Victor%20Checchi%20no%20dia%2018%2F06." class="btn btn-primary agenda-btn" target="_blank">💬 Agendar pelo WhatsApp</a>
+        <a href="https://wa.me/554299712393?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20com%20o%20Dr.%20Victor%20Checchi%20no%20dia%2018%2F06." class="btn btn-primary agenda-btn" target="_blank">💬 Agendar pelo WhatsApp</a>
       </div>
       <div class="promo-card reveal"><div class="promo-num">03</div><div class="promo-title">Armações Modernas</div><div class="promo-desc">Marcas exclusivas e os designs mais atuais do mercado.</div></div>
       <div class="promo-card reveal"><div class="promo-num">04</div><div class="promo-title">Lentes Premium</div><div class="promo-desc">Tecnologia de ponta para conforto e nitidez incomparáveis.</div></div>
@@ -517,6 +527,10 @@
     </div>
     <div class="qr-card reveal">
       <div id="qrcode"></div>
+      <a href="https://fabianaju.github.io/otica-reserva-do-iguacu/" target="_blank" class="qr-url">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        fabianaju.github.io/otica-reserva-do-iguacu
+      </a>
       <div class="qr-hint">📱 Aponte a câmera do celular diretamente para o QR Code</div>
       <div class="qr-actions">
         <button class="btn btn-primary" onclick="baixarQR()">⬇ Baixar</button>
@@ -593,7 +607,7 @@
         </div>
       </div>
     </div>
-    <a href="https://wa.me/5542998224827?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20com%20o%20Dr.%20Victor%20Checchi%20no%20dia%2018%2F06." target="_blank" class="btn btn-primary modal-btn">💬 Agendar pelo WhatsApp</a>
+    <a href="https://wa.me/554299712393?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20com%20o%20Dr.%20Victor%20Checchi%20no%20dia%2018%2F06." target="_blank" class="btn btn-primary modal-btn">💬 Agendar pelo WhatsApp</a>
   </div>
 </div>
 
