@@ -10,9 +10,10 @@
 <meta property="og:title" content="Óticas Precisão Reserva do Iguaçu" />
 <meta property="og:description" content="Enxergue o mundo com mais estilo e precisão." />
 <meta property="og:type" content="website" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --black:#0a0a0a;
@@ -23,9 +24,10 @@
     --gold-deep:#a8801f;
     --white:#f7f5f0;
     --muted:#a8a39a;
-    --line:rgba(212,175,55,.22);
+    --line:rgba(212,175,55,.15);
     --radius:18px;
     --shadow-gold:0 10px 40px -10px rgba(212,175,55,.45);
+    --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -71,8 +73,8 @@
   .nav-logo{display:flex;align-items:center;gap:10px;font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600}
   .nav-logo .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold)}
   .nav-logo-img{width:36px;height:36px;border-radius:50%;object-fit:cover;border:1px solid var(--gold);box-shadow:0 0 12px rgba(212,175,55,.4)}
-  .nav-cta{font-size:.85rem;padding:9px 18px;border-radius:999px;border:1px solid var(--line);color:var(--gold-2);text-decoration:none;transition:.3s}
-  .nav-cta:hover{background:var(--gold);color:#000;box-shadow:var(--shadow-gold)}
+  .nav-cta{font-size:.85rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:10px 20px;border-radius:999px;border:1px solid var(--gold);color:var(--gold-2);text-decoration:none;background:rgba(212,175,55,.05);transition:var(--transition);}
+  .nav-cta:hover{background:var(--gold);color:#000;box-shadow:var(--shadow-gold);transform:translateY(-1px)}
 
   /* HERO */
   header.hero{
@@ -219,33 +221,78 @@
   .agenda-btn{width:100%;justify-content:center;margin-top:4px;font-size:.88rem;padding:12px 18px}
 
   /* Map */
+  .map-container{max-width:900px;margin:0 auto}
   .map-wrap{
     border-radius:24px;overflow:hidden;border:1px solid var(--line);
-    box-shadow:0 30px 80px -30px rgba(0,0,0,.8);
-    position:relative;aspect-ratio:16/9;
+    box-shadow:0 40px 90px -30px rgba(0,0,0,.8);
+    position:relative;aspect-ratio:16/9;background:#000;
   }
-  .map-wrap iframe{width:100%;height:100%;border:0;filter:grayscale(.4) contrast(1.1) brightness(.9)}
+  .map-wrap iframe{width:100%;height:100%;border:0;filter:grayscale(.5) contrast(1.1) brightness(.85);transition:var(--transition)}
+  .map-wrap:hover iframe{filter:grayscale(.2) contrast(1.05) brightness(.95)}
 
-  /* QR */
-  .qr-card{
-    max-width:340px;margin:0 auto;padding:30px;border-radius:24px;text-align:center;
-    background:linear-gradient(160deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
-    border:1px solid var(--line);backdrop-filter:blur(10px);
+  /* Footer Elegante */
+  footer.elegant-footer{
+    background-color:#060606;color:var(--white);
+    padding:80px 0 30px;border-top:1px solid var(--line);position:relative;
   }
-  #qrcode{display:inline-block;padding:14px;background:#fff;border-radius:14px;margin-bottom:14px;box-shadow:0 0 30px rgba(212,175,55,.3)}
-  #qrcode img,#qrcode canvas,#qr-svg{display:block}
-  #qr-svg{width:220px;height:220px}
-  .qr-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-  .qr-actions .btn{padding:10px 18px;font-size:.85rem}
+  .footer-grid{display:grid;grid-template-columns:1.2fr 0.8fr 0.9fr 1fr 1fr;gap:30px;margin-bottom:50px}
+  .footer-col{display:flex;flex-direction:column;gap:16px}
+  .footer-logo-wrap{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+  .footer-logo-img{width:46px;height:46px;border-radius:50%;object-fit:cover;border:1px solid var(--gold);box-shadow:0 0 20px rgba(212,175,55,.2)}
+  .footer-logo-text{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:600;letter-spacing:.5px}
+  .footer-col h4{
+    font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:var(--gold);font-weight:600;
+    letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;
+    position:relative;padding-bottom:8px;
+  }
+  .footer-col h4::after{content:'';position:absolute;left:0;bottom:0;width:35px;height:1px;background-color:var(--gold)}
+  .footer-col p{color:var(--muted);font-size:.9rem;line-height:1.6;font-weight:400}
+  .footer-links-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+  .footer-links-list li a{
+    color:var(--muted);text-decoration:none;font-size:.9rem;
+    display:inline-flex;align-items:center;gap:10px;transition:var(--transition);
+  }
+  .footer-links-list li a i{font-size:.95rem;color:var(--gold);width:16px;text-align:center;transition:var(--transition)}
+  .footer-links-list li a:hover{color:var(--gold-2);transform:translateX(4px)}
+  .footer-links-list li a:hover i{transform:scale(1.1);color:var(--gold-2)}
+  .footer-social-icons{display:flex;gap:12px;margin-top:8px}
+  .footer-social-icons a{
+    display:flex;align-items:center;justify-content:center;
+    width:38px;height:38px;border-radius:50%;border:1px solid rgba(212,175,55,.3);
+    color:var(--gold);font-size:1rem;text-decoration:none;transition:var(--transition);
+  }
+  .footer-social-icons a:hover{
+    background:linear-gradient(135deg,#f5d97a,#d4af37);color:#060606;
+    border-color:var(--gold);box-shadow:0 0 15px rgba(212,175,55,.5);transform:translateY(-3px);
+  }
+  .footer-qr-container{align-items:center;text-align:center}
+  .footer-qr-box{
+    background:#fff;padding:10px;border-radius:14px;border:1px solid var(--gold);
+    box-shadow:0 10px 30px rgba(212,175,55,.15);display:inline-block;transition:var(--transition);
+  }
+  .footer-qr-box:hover{transform:scale(1.03);box-shadow:0 15px 35px rgba(212,175,55,.3)}
+  .footer-qr-box svg{display:block;width:120px;height:120px}
+  .footer-qr-text{font-size:.78rem;color:var(--muted);margin-top:6px;line-height:1.4}
+  .footer-qr-btn{margin-top:8px;padding:8px 18px;font-size:.8rem;border-radius:20px}
+  .footer-bottom{
+    text-align:center;padding-top:30px;border-top:1px solid rgba(255,255,255,.05);
+    color:var(--muted);font-size:.85rem;letter-spacing:.02em;
+  }
 
-  /* Footer */
-  footer{padding:60px 0 30px;border-top:1px solid rgba(212,175,55,.12);margin-top:60px;background:linear-gradient(180deg,transparent,rgba(0,0,0,.5))}
-  .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;margin-bottom:40px}
-  .footer-col h4{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold);margin-bottom:14px}
-  .footer-col p,.footer-col a{color:var(--muted);font-size:.88rem;text-decoration:none;display:block;margin-bottom:6px;transition:.3s}
-  .footer-col a:hover{color:var(--gold-2)}
-  .footer-bottom{text-align:center;padding-top:24px;border-top:1px solid rgba(255,255,255,.05);color:var(--muted);font-size:.8rem}
-  .footer-bottom .gold-text{font-weight:500}
+  @media (max-width:1100px){.footer-grid{grid-template-columns:repeat(3,1fr);gap:40px}}
+  @media (max-width:768px){
+    section{padding:70px 0}
+    .hero-logo{width:120px;height:120px}
+    .form-card{padding:28px 20px}
+    .footer-grid{grid-template-columns:repeat(2,1fr)}
+  }
+  @media (max-width:480px){
+    .footer-grid{grid-template-columns:1fr;gap:32px;text-align:center}
+    .footer-logo-wrap{justify-content:center}
+    .footer-col h4::after{left:50%;transform:translateX(-50%)}
+    .footer-social-icons{justify-content:center}
+    .modal-box{padding:26px 20px;}
+  }
 
   /* Reveal animation */
   .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
@@ -312,14 +359,6 @@
   .modal-row strong{color:var(--gold);font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;}
   .modal-row div > span{color:var(--white);line-height:1.5;}
   .modal-btn{width:100%;justify-content:center;font-size:.9rem;padding:13px 18px;}
-
-  @media (max-width:640px){
-    section{padding:70px 0}
-    .hero-logo{width:120px;height:120px}
-    .hero-logo svg{width:70px;height:70px}
-    .form-card{padding:28px 20px}
-    .modal-box{padding:26px 20px;}
-  }
 </style>
 </head>
 <body>
@@ -347,7 +386,7 @@
     <div class="hero-buttons">
       <a href="https://wa.me/554299712393" class="btn btn-primary">💬 WhatsApp</a>
       <a href="#agendar" class="btn btn-ghost">📅 Agendar Consulta</a>
-      <a href="https://www.instagram.com/oticaprecisao/" class="btn btn-ghost">📸 Instagram</a>
+      <a href="https://www.instagram.com/oticaprecisaoreserva/" class="btn btn-ghost">📸 Instagram</a>
     </div>
   </div>
 </header>
@@ -371,7 +410,7 @@
         <div class="action-title">Como Chegar</div>
         <div class="action-sub">Ver no mapa</div>
       </a>
-      <a href="https://www.instagram.com/oticaprecisao/" class="action-card reveal">
+      <a href="https://www.instagram.com/oticaprecisaoreserva/" class="action-card reveal">
         <div class="action-icon">📸</div>
         <div class="action-title">Instagram</div>
         <div class="action-sub">Veja nossos modelos</div>
@@ -443,7 +482,7 @@
     </div>
     <div class="promo-grid">
       <div class="promo-card reveal"><div class="promo-num">01</div><div class="promo-title">Parcelamento Facilitado</div><div class="promo-desc">Pague em condições especiais e leve o melhor para sua visão.</div></div>
-      <div class="promo-card promo-card--agenda reveal">
+      <div class="promo-card promo-card--agenda reveal" style="cursor:pointer" onclick="abrirModalConsulta(event)">
         <div class="agenda-badge">📅 Agenda Especial</div>
         <div class="agenda-doctor">
           <span class="agenda-icon">👁️</span>
@@ -452,12 +491,8 @@
             <div class="agenda-role">Oculista</div>
           </div>
         </div>
-        <div class="agenda-details">
-          <div class="agenda-row"><span>📆</span><div><strong>Data</strong><span>18 de junho de 2026 · Manhã</span></div></div>
-          <div class="agenda-row"><span>📍</span><div><strong>Local</strong><span>Ao lado da Óticas Precisão<br>Reserva do Iguaçu — PR</span></div></div>
-        </div>
-        <div class="agenda-how">✅ <strong>Como agendar:</strong> Entre em contato pelo WhatsApp</div>
-        <a href="https://wa.me/554299712393?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20com%20o%20Dr.%20Victor%20Checchi%20no%20dia%2018%2F06." class="btn btn-primary agenda-btn" target="_blank">💬 Agendar pelo WhatsApp</a>
+        <div class="promo-desc" style="margin-top:8px">Consulta especializada disponível em breve. Vagas limitadas por ordem de agendamento.</div>
+        <div class="promo-link" style="margin-top:14px;display:inline-flex;align-items:center;gap:6px;color:var(--gold);font-size:.88rem;font-weight:600;">Ver detalhes da agenda →</div>
       </div>
       <div class="promo-card reveal"><div class="promo-num">03</div><div class="promo-title">Armações Modernas</div><div class="promo-desc">Marcas exclusivas e os designs mais atuais do mercado.</div></div>
       <div class="promo-card reveal"><div class="promo-num">04</div><div class="promo-title">Lentes Premium</div><div class="promo-desc">Tecnologia de ponta para conforto e nitidez incomparáveis.</div></div>
@@ -475,71 +510,72 @@
       <h2 class="section-title">Venha nos <span class="gold-text">visitar</span></h2>
       <p class="section-desc">Estamos prontos para receber você com toda a atenção que merece.</p>
     </div>
-    <div class="map-wrap reveal">
+    <div class="map-container">
+      <div class="map-wrap reveal">
       <iframe loading="lazy" allowfullscreen
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3611!2d-52.0282524!3d-25.8340737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ef81e6e0c7c575:0x9c67d3be2445e97b!2sOticas+Precis%C3%A3o!5e0!3m2!1spt!2sbr!4v1"></iframe>
     </div>
     <div style="text-align:center;margin-top:22px">
       <a href="https://www.google.com/maps/place/Oticas+Precis%C3%A3o/@-25.8340688,-52.0308273,17z/data=!3m1!4b1!4m6!3m5!1s0x94ef81e6e0c7c575:0x9c67d3be2445e97b!8m2!3d-25.8340737!4d-52.0282524!16s%2Fg%2F11xysy1k4b?entry=ttu" class="btn btn-primary">📍 Abrir no Google Maps</a>
     </div>
-  </div>
-</section>
-
-<!-- QR -->
-<section id="qr">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="section-eyebrow">Compartilhe</div>
-      <h2 class="section-title">QR Code <span class="gold-text">exclusivo</span></h2>
-      <p class="section-desc">Escaneie ou baixe o QR Code para acessar nossa página.</p>
-    </div>
-    <div class="qr-card reveal">
-      <div id="qrcode"><svg id="qr-svg" xmlns="http://www.w3.org/2000/svg"></svg></div>
-      <p style="font-size:.82rem;color:var(--muted);margin:-6px 0 14px">Aponte a câmera do celular para acessar o site</p>
-      <div class="qr-actions">
-        <button class="btn btn-primary" onclick="baixarQR()">⬇ Baixar PNG</button>
-        <button class="btn btn-ghost" onclick="compartilharQR()">↗ Compartilhar</button>
-      </div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer>
+<footer class="elegant-footer">
   <div class="container">
     <div class="footer-grid">
+
       <div class="footer-col">
-        <h4>Óticas Precisão Reserva do Iguaçu</h4>
+        <div class="footer-logo-wrap">
+          <img src="https://fabianaju.github.io/otica-reserva-do-iguacu/logo.jpeg" alt="Óticas Precisão" class="footer-logo-img"/>
+          <span class="footer-logo-text">Óticas Precisão <span class="gold-text">Reserva do Iguaçu</span></span>
+        </div>
         <p>Cuidando dos seus olhos com estilo, qualidade e precisão.</p>
+        <div class="footer-social-icons">
+          <a href="https://www.instagram.com/oticaprecisaoreserva/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://wa.me/554299712393" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
       </div>
+
       <div class="footer-col">
         <h4>Contato</h4>
-        <a href="https://wa.me/554299712393">WhatsApp: (42) 9971-2393</a>
-        <a href="tel:+554299712393">Telefone: (42) 9971-2393</a>
-        <a href="https://www.instagram.com/oticaprecisao/">Instagram</a>
+        <ul class="footer-links-list">
+          <li><a href="https://wa.me/554299712393"><i class="fa-brands fa-whatsapp"></i> (42) 9971-2393</a></li>
+          <li><a href="tel:+554299712393"><i class="fa-solid fa-phone"></i> (42) 9971-2393</a></li>
+          <li><a href="https://www.instagram.com/oticaprecisaoreserva/" target="_blank" rel="noopener"><i class="fa-solid fa-hashtag"></i> @oticaprecisaoreserva</a></li>
+        </ul>
       </div>
+
       <div class="footer-col">
         <h4>Endereço</h4>
-        <a href="https://www.google.com/maps/place/Oticas+Precis%C3%A3o/@-25.8340688,-52.0308273,17z/data=!3m1!4b1!4m6!3m5!1s0x94ef81e6e0c7c575:0x9c67d3be2445e97b!8m2!3d-25.8340737!4d-52.0282524!16s%2Fg%2F11xysy1k4b?entry=ttu">Av. Pedro Siqueira, 400 - Centro, Reserva do Iguaçu - PR, 85168-000</a>
-        <p></p>
+        <ul class="footer-links-list">
+          <li><a href="https://www.google.com/maps/place/Oticas+Precis%C3%A3o/@-25.8340688,-52.0308273,17z/data=!3m1!4b1!4m6!3m5!1s0x94ef81e6e0c7c575:0x9c67d3be2445e97b!8m2!3d-25.8340737!4d-52.0282524!16s%2Fg%2F11xysy1k4b?entry=ttu"><i class="fa-solid fa-location-dot"></i> Av. Pedro Siqueira, 400 - Centro<br>Reserva do Iguaçu - PR, 85168-000</a></li>
+        </ul>
+        <p style="margin-top:4px;font-size:.85rem;"><i class="fa-regular fa-clock" style="color:var(--gold);margin-right:6px;"></i> Horário de Atendimento:<br>Seg a Sex: 08:00 – 18:00<br>Sábado: 08:30 – 12:00</p>
       </div>
-      <div class="footer-col">
-        <h4>Horário</h4>
-        <p>Seg a Sex: 08:00 – 18:00</p>
-        <p>Sábado: 08:30 – 12:00</p>
-      </div>
-      <div class="footer-col">
-        <h4>Horário</h4>
-        <p>Seg a Sex: 08:00 – 18:00</p>
-        <p>Sábado: 08:30 – 11:30</p>
-      </div>
+
       <div class="footer-col">
         <h4>Nossas Lojas</h4>
-        <a href="https://otica-cantagalo.vercel.app/" target="_blank" rel="noopener">📍 Cantagalo</a>
-        <a href="https://otica-campina-do-simao.vercel.app/" target="_blank" rel="noopener">📍 Campina do Simão</a>
-        <a href="https://otica-foz-do-jordao.vercel.app/" target="_blank" rel="noopener">📍 Foz do Jordão</a>
-        <a href="https://oticaprecisaovirmond.vercel.app/" target="_blank" rel="noopener">📍 Virmond</a>
+        <ul class="footer-links-list">
+          <li><a href="https://otica-cantagalo.vercel.app/" target="_blank" rel="noopener"><i class="fa-solid fa-location-dot"></i> Cantagalo</a></li>
+          <li><a href="https://otica-campina-do-simao.vercel.app/" target="_blank" rel="noopener"><i class="fa-solid fa-location-dot"></i> Campina do Simão</a></li>
+          <li><a href="https://otica-foz-do-jordao.vercel.app/" target="_blank" rel="noopener"><i class="fa-solid fa-location-dot"></i> Foz do Jordão</a></li>
+          <li><a href="https://oticaprecisaovirmond.vercel.app/" target="_blank" rel="noopener"><i class="fa-solid fa-location-dot"></i> Virmond</a></li>
+        </ul>
       </div>
+
+      <div class="footer-col footer-qr-container">
+        <h4>Cartão Digital</h4>
+        <div class="footer-qr-box">
+          <svg id="qr-svg-footer" xmlns="http://www.w3.org/2000/svg"></svg>
+        </div>
+        <p class="footer-qr-text">Aponte a câmera do celular para abrir nosso site oficial instantaneamente.</p>
+        <button class="btn btn-primary footer-qr-btn" onclick="baixarQR()"><i class="fa-solid fa-download"></i> Baixar QR</button>
+      </div>
+
     </div>
     <div class="footer-bottom">
       © <span id="ano"></span> <span class="gold-text">Óticas Precisão Reserva do Iguaçu</span> — Todos os direitos reservados.
@@ -630,51 +666,54 @@
   }
 
   // ─── QR Code gerado puramente em JavaScript / SVG ───────────────────────────
-  const SITE_URL = 'https://fabianaju.github.io/otica-reserva-do-iguacu/';
+  const SITE_URL = 'https://otica-reserva-do-iguacu.vercel.app/';
 
   (function buildQR(){
     const s = document.createElement('script');
     s.src = 'https://unpkg.com/qrcode-generator@1.4.4/qrcode.js';
     s.onload = function(){
       try {
-        const qr = qrcode(0, 'H');
-        qr.addData(SITE_URL);
-        qr.make();
-        const size = 220;
-        const mod = qr.getModuleCount();
-        const cell = Math.floor(size / (mod + 8));
-        const pad = Math.floor((size - cell * mod) / 2);
-        const svg = document.getElementById('qr-svg');
-        svg.setAttribute('width', size);
-        svg.setAttribute('height', size);
-        svg.setAttribute('viewBox', `0 0 ${size} ${size}`);
-        const bg = document.createElementNS('http://www.w3.org/2000/svg','rect');
-        bg.setAttribute('width', size); bg.setAttribute('height', size); bg.setAttribute('fill','#fff');
-        svg.appendChild(bg);
-        for(let r=0;r<mod;r++){
-          for(let c=0;c<mod;c++){
-            if(qr.isDark(r,c)){
-              const rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
-              rect.setAttribute('x', pad + c*cell);
-              rect.setAttribute('y', pad + r*cell);
-              rect.setAttribute('width', cell);
-              rect.setAttribute('height', cell);
-              rect.setAttribute('fill','#0a0a0a');
-              svg.appendChild(rect);
+        function renderQR(svgId, size) {
+          const qr = qrcode(0, 'H');
+          qr.addData(SITE_URL);
+          qr.make();
+          const mod = qr.getModuleCount();
+          const cell = Math.floor(size / (mod + 8));
+          const pad = Math.floor((size - cell * mod) / 2);
+          const svg = document.getElementById(svgId);
+          if (!svg) return;
+          svg.setAttribute('width', size);
+          svg.setAttribute('height', size);
+          svg.setAttribute('viewBox', `0 0 ${size} ${size}`);
+          const bg = document.createElementNS('http://www.w3.org/2000/svg','rect');
+          bg.setAttribute('width', size); bg.setAttribute('height', size); bg.setAttribute('fill','#fff');
+          svg.appendChild(bg);
+          for(let r=0;r<mod;r++){
+            for(let c=0;c<mod;c++){
+              if(qr.isDark(r,c)){
+                const rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
+                rect.setAttribute('x', pad + c*cell);
+                rect.setAttribute('y', pad + r*cell);
+                rect.setAttribute('width', cell);
+                rect.setAttribute('height', cell);
+                rect.setAttribute('fill','#0a0a0a');
+                svg.appendChild(rect);
+              }
             }
           }
         }
+        renderQR('qr-svg-footer', 120);
       } catch(err){ console.error('QR error:', err); }
     };
     s.onerror = function(){
       const el = document.getElementById('qrcode');
-      el.innerHTML = `<a href="${SITE_URL}" style="color:#d4af37;font-size:.85rem;word-break:break-all">${SITE_URL}</a>`;
+      if(el) el.innerHTML = `<a href="${SITE_URL}" style="color:#d4af37;font-size:.85rem;word-break:break-all">${SITE_URL}</a>`;
     };
     document.head.appendChild(s);
   })();
 
   function svgToPNGDataURL(cb){
-    const svg = document.getElementById('qr-svg');
+    const svg = document.getElementById('qr-svg-footer');
     const w = 440, h = 440;
     const serialized = new XMLSerializer().serializeToString(svg);
     const blob = new Blob([serialized], {type:'image/svg+xml;charset=utf-8'});
