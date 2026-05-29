@@ -1,0 +1,2138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+<title>Catálogo — Óticas Precisão</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --black: #060606;
+  --black-2: #0c0c0c;
+  --black-3: #121212;
+  --gold: #d4af37;
+  --gold-2: #f5d97a;
+  --gold-deep: #a8801f;
+  --white: #fcfbfa;
+  --muted: #b8b4ab;
+  --line: rgba(212,175,55,0.15);
+  --radius: 18px;
+  --shadow-gold: 0 10px 40px -10px rgba(212,175,55,0.35);
+  --transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+  --bg: #060606;
+  --bg-2: #0c0c0c;
+  --bg-3: #121212;
+  --surface: rgba(255,255,255,0.03);
+  --surface-hover: rgba(212,175,55,0.08);
+  --border: rgba(255,255,255,0.05);
+  --border-gold: rgba(212,175,55,0.2);
+  --text-main: #fcfbfa;
+  --text-muted: #b8b4ab;
+}
+
+/* ─── MODO CLARO ─── */
+body.light {
+  --bg: #f5f1ea;
+  --bg-2: #ede8df;
+  --bg-3: #e4ddd2;
+  --surface: rgba(0,0,0,0.03);
+  --surface-hover: rgba(180,140,20,0.07);
+  --border: rgba(0,0,0,0.07);
+  --border-gold: rgba(180,140,20,0.28);
+  --text-main: #1a1208;
+  --text-muted: #6b6050;
+  --line: rgba(180,140,20,0.2);
+  --gold: #b8920e;
+  --gold-2: #8a6a00;
+  --gold-deep: #6b4f00;
+}
+
+body.light::before {
+  background:
+    radial-gradient(1200px 600px at 20% -10%, rgba(212,175,55,0.08), transparent 70%),
+    radial-gradient(900px 500px at 100% 20%, rgba(212,175,55,0.05), transparent 60%),
+    radial-gradient(800px 600px at 50% 110%, rgba(212,175,55,0.06), transparent 60%),
+    var(--bg);
+}
+
+body.light::after {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+}
+
+body.light .catalogo-nav {
+  background: rgba(245,241,234,0.88);
+  border-bottom-color: rgba(180,140,20,0.18);
+}
+
+body.light .produto-card {
+  background: linear-gradient(145deg, rgba(255,255,255,0.85), rgba(255,255,255,0.6));
+  border-color: rgba(180,140,20,0.22);
+}
+
+body.light .produto-card:hover {
+  border-color: rgba(180,140,20,0.55);
+  box-shadow: 0 24px 60px -12px rgba(180,140,20,0.18);
+}
+
+body.light .filtro-btn {
+  color: var(--text-muted);
+  border-color: rgba(180,140,20,0.25);
+}
+
+body.light .filtro-btn:hover,
+body.light .filtro-btn.ativo {
+  background: rgba(180,140,20,0.1);
+  border-color: var(--gold);
+  color: var(--gold-2);
+}
+
+body.light .carrinho-overlay { background: rgba(0,0,0,0.55); }
+
+body.light .carrinho-painel {
+  background: linear-gradient(160deg, #f0ece2, #e8e2d6);
+  border-left-color: rgba(180,140,20,0.25);
+}
+
+body.light .carrinho-head { border-bottom-color: rgba(180,140,20,0.15); }
+body.light .carrinho-foot { border-top-color: rgba(180,140,20,0.15); background: rgba(0,0,0,0.04); }
+body.light .carrinho-foot .label { color: var(--text-muted); }
+body.light .carrinho-foot .valor { color: var(--text-main); }
+
+body.light .item-emoji-mini {
+  background: rgba(180,140,20,0.08);
+  border-color: rgba(180,140,20,0.2);
+}
+
+body.light .item-nome { color: var(--text-main); }
+body.light .item-cat { color: var(--gold); }
+body.light .item-preco { color: var(--gold-2); }
+
+body.light .qty-btn {
+  border-color: rgba(180,140,20,0.25);
+  color: var(--gold);
+}
+
+body.light .qty-btn:hover { background: rgba(180,140,20,0.12); }
+
+body.light .btn-add-carrinho {
+  color: var(--gold-2);
+  border-color: rgba(180,140,20,0.3);
+}
+
+body.light .btn-add-carrinho:hover {
+  background: rgba(180,140,20,0.1);
+  border-color: var(--gold);
+}
+
+body.light .btn-fechar {
+  border-color: rgba(0,0,0,0.1);
+  color: var(--text-muted);
+}
+
+body.light .btn-fechar:hover { border-color: var(--gold); color: var(--gold); }
+
+body.light .btn-limpar {
+  border-color: rgba(200,50,50,0.2);
+  color: rgba(180,30,30,0.55);
+}
+
+body.light .btn-limpar:hover {
+  border-color: rgba(200,50,50,0.5);
+  color: rgba(180,30,30,0.85);
+  background: rgba(200,50,50,0.05);
+}
+
+body.light .toast {
+  background: linear-gradient(135deg, #f5f1ea, #ede8df);
+  border-color: var(--gold);
+  color: var(--gold-2);
+}
+
+body.light .carrinho-vazio { color: var(--text-muted); }
+
+body.light footer.elegant-footer {
+  background-color: #ede8df;
+  border-top-color: rgba(180,140,20,0.18);
+}
+
+body.light .footer-col p { color: var(--text-muted); }
+body.light .footer-links-list li a { color: var(--text-muted); }
+body.light .footer-links-list li a:hover { color: var(--gold); }
+body.light .footer-bottom { color: var(--text-muted); }
+
+body.light .footer-social-icons a {
+  border-color: rgba(180,140,20,0.25);
+  color: var(--gold);
+}
+
+body.light .nav-cart-btn {
+  background: rgba(180,140,20,0.08);
+  border-color: rgba(180,140,20,0.25);
+  color: var(--gold-2);
+}
+
+body.light .nav-cart-btn:hover {
+  background: rgba(180,140,20,0.15);
+  border-color: var(--gold);
+}
+
+body.light .nav-cart-btn i { color: var(--gold); }
+
+body.light .catalogo-header .tag {
+  border-color: rgba(180,140,20,0.28);
+  color: var(--gold);
+  background: rgba(180,140,20,0.06);
+}
+
+body.light .produto-preco-valor {
+  background: linear-gradient(135deg, #8a6a00, #b8920e);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+body.light .badge-top {
+  background: linear-gradient(135deg, #d4af37, #a8801f);
+}
+
+body.light .lb-modal { background: rgba(0,0,0,0); }
+body.light .lb-modal.lb-ativo { background: rgba(0,0,0,0.85); }
+
+/* ─── BOTÃO TOGGLE TEMA ─── */
+.btn-tema {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-gold);
+  background: rgba(212,175,55,0.08);
+  color: var(--gold-2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.btn-tema:hover {
+  background: rgba(212,175,55,0.18);
+  border-color: var(--gold);
+  transform: rotate(20deg) scale(1.08);
+}
+
+body.light .btn-tema {
+  background: rgba(180,140,20,0.08);
+  border-color: rgba(180,140,20,0.28);
+  color: var(--gold-2);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text-main);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(1200px 600px at 20% -10%, rgba(212,175,55,0.10), transparent 70%),
+    radial-gradient(900px 500px at 100% 20%, rgba(212,175,55,0.06), transparent 60%),
+    radial-gradient(800px 600px at 50% 110%, rgba(212,175,55,0.08), transparent 60%),
+    var(--bg);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(ellipse at center, #000 40%, transparent 80%);
+}
+
+.container { max-width: 1180px; margin: 0 auto; padding: 0 22px; }
+.serif { font-family: 'Cormorant Garamond', serif; letter-spacing: 0.5px; }
+
+.gold-text {
+  background: linear-gradient(135deg, #f5d97a 0%, #d4af37 40%, #a8801f 70%, #f5d97a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ─── SEÇÃO HEADER ─── */
+.catalogo-header {
+  padding: 90px 0 60px;
+  text-align: center;
+  position: relative;
+}
+
+.catalogo-header .tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--border-gold);
+  padding: 6px 16px;
+  border-radius: 40px;
+  margin-bottom: 24px;
+  background: rgba(212,175,55,0.05);
+}
+
+.catalogo-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 6vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.catalogo-header p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  max-width: 480px;
+  margin: 0 auto;
+  font-weight: 300;
+}
+
+/* ─── FILTROS / CATEGORIAS ─── */
+.filtros {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 52px;
+}
+
+.filtro-btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 9px 22px;
+  border-radius: 40px;
+  border: 1px solid var(--border-gold);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filtro-btn:hover,
+.filtro-btn.ativo {
+  background: rgba(212,175,55,0.12);
+  border-color: var(--gold);
+  color: var(--gold-2);
+}
+
+/* ─── GRID DE PRODUTOS ─── */
+.produtos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 28px;
+  margin-bottom: 80px;
+}
+
+/* ─── CARD PRODUTO ─── */
+.produto-card {
+  position: relative;
+  background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: var(--transition);
+  cursor: default;
+}
+
+.produto-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(212,175,55,0.06) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.produto-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(212,175,55,0.5);
+  box-shadow: 0 24px 60px -12px rgba(212,175,55,0.2);
+}
+
+.produto-card:hover::before { opacity: 1; }
+
+/* BADGE MAIS VENDIDO */
+.badge-top {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: linear-gradient(135deg, #f5d97a, #d4af37);
+  padding: 5px 12px;
+  border-radius: 40px;
+  box-shadow: 0 4px 16px rgba(212,175,55,0.4);
+}
+
+/* IMAGEM */
+.produto-img {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.02);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.produto-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);
+  filter: brightness(0.9);
+}
+
+.produto-card:hover .produto-img img {
+  transform: scale(1.05);
+  filter: brightness(1);
+}
+
+/* EMOJI PLACEHOLDER */
+.produto-emoji {
+  font-size: 5rem;
+  line-height: 1;
+  filter: drop-shadow(0 8px 24px rgba(212,175,55,0.15));
+  transition: transform 0.4s ease;
+}
+.produto-card:hover .produto-emoji { transform: scale(1.08) rotate(-3deg); }
+
+/* INFO */
+.produto-info {
+  padding: 20px 22px 22px;
+  position: relative;
+  z-index: 1;
+}
+
+.produto-categoria {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.produto-nome {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.produto-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.produto-rodape {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.produto-preco {
+  display: flex;
+  flex-direction: column;
+}
+
+.produto-preco-label {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.produto-preco-valor {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #f5d97a, #d4af37);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1;
+}
+
+/* BOTÕES CARD */
+.card-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  align-items: flex-end;
+}
+
+.btn-whats-rapido {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  border: none;
+  padding: 7px 14px;
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.btn-whats-rapido:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(37,211,102,0.35);
+}
+
+.btn-add-carrinho {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-2);
+  background: transparent;
+  border: 1px solid var(--border-gold);
+  padding: 7px 14px;
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.btn-add-carrinho:hover {
+  background: rgba(212,175,55,0.12);
+  border-color: var(--gold);
+  transform: scale(1.05);
+}
+
+.btn-add-carrinho.adicionado {
+  background: rgba(212,175,55,0.15);
+  border-color: var(--gold);
+  color: var(--gold-2);
+}
+
+/* ─── CARRINHO FLUTUANTE ─── */
+.carrinho-fab {
+  position: fixed;
+  bottom: 32px;
+  left: 32px;
+  z-index: 150;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #1a1409, #0c0a04);
+  border: 1px solid var(--gold);
+  border-radius: 50px;
+  padding: 13px 22px;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: 0 8px 32px rgba(212,175,55,0.3);
+  color: var(--gold-2);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+.carrinho-fab:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 14px 44px rgba(212,175,55,0.45);
+  border-color: var(--gold-2);
+}
+
+.carrinho-fab .fab-icon { font-size: 1.1rem; }
+
+.carrinho-badge {
+  background: linear-gradient(135deg, #f5d97a, #d4af37);
+  color: var(--black);
+  font-size: 0.68rem;
+  font-weight: 800;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2px;
+}
+
+.carrinho-fab.oculto { 
+  opacity: 0; 
+  pointer-events: none; 
+  transform: translateY(20px) scale(0.9);
+}
+
+/* ─── PAINEL CARRINHO ─── */
+.carrinho-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  z-index: 200;
+  display: none;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.carrinho-overlay.ativo { display: block; }
+
+.carrinho-painel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: min(460px, 100vw);
+  background: linear-gradient(160deg, #131106, #0a0902);
+  border-left: 1px solid var(--border-gold);
+  z-index: 201;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.45s cubic-bezier(0.16,1,0.3,1);
+  box-shadow: -20px 0 80px rgba(0,0,0,0.6);
+}
+
+.carrinho-overlay.ativo .carrinho-painel { transform: translateX(0); }
+
+.carrinho-head {
+  padding: 28px 28px 20px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.carrinho-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.carrinho-title i { color: var(--gold); font-size: 1.2rem; }
+
+.btn-fechar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  transition: var(--transition);
+}
+
+.btn-fechar:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* LISTA ITENS */
+.carrinho-lista {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 28px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(212,175,55,0.2) transparent;
+}
+
+.carrinho-vazio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 14px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.carrinho-vazio .vazio-icon {
+  font-size: 3rem;
+  opacity: 0.3;
+  display: block;
+}
+
+.carrinho-vazio p { font-size: 0.9rem; }
+
+.carrinho-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeOutItem {
+  from { opacity: 1; transform: translateX(0); max-height: 100px; margin: 0; padding: 14px 0; }
+  to { opacity: 0; transform: translateX(30px); max-height: 0; margin: 0; padding: 0; }
+}
+
+.carrinho-item.removendo {
+  animation: fadeOutItem 0.28s ease forwards;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.item-emoji-mini {
+  width: 54px;
+  height: 54px;
+  background: rgba(212,175,55,0.07);
+  border: 1px solid var(--border-gold);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.item-info { flex: 1; min-width: 0; }
+
+.item-nome {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-cat {
+  font-size: 0.68rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.item-preco {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold-2);
+  white-space: nowrap;
+}
+
+.item-subtotal {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  text-align: right;
+  margin-top: 2px;
+}
+
+/* CONTROLE QTDE */
+.item-qty {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.qty-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--border-gold);
+  background: transparent;
+  color: var(--gold);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  transition: var(--transition);
+}
+
+.qty-btn:hover {
+  background: rgba(212,175,55,0.15);
+  border-color: var(--gold);
+}
+
+.qty-num {
+  font-size: 0.9rem;
+  font-weight: 600;
+  min-width: 18px;
+  text-align: center;
+}
+
+.btn-remover {
+  background: none;
+  border: none;
+  color: rgba(255,100,100,0.5);
+  cursor: pointer;
+  padding: 4px;
+  font-size: 0.8rem;
+  transition: color 0.2s;
+  flex-shrink: 0;
+}
+
+.btn-remover:hover { color: rgba(255,100,100,0.9); }
+
+/* RODAPÉ CARRINHO */
+.carrinho-foot {
+  padding: 20px 28px 28px;
+  border-top: 1px solid var(--line);
+  background: rgba(0,0,0,0.2);
+}
+
+.resumo-linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+}
+
+.resumo-linha.total {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-gold);
+  margin-bottom: 20px;
+}
+
+.resumo-linha.total .label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.resumo-linha.total .valor {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #f5d97a, #d4af37);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.label { color: var(--text-muted); }
+.valor { font-weight: 600; }
+
+/* BOTÃO ENVIAR WHATSAPP */
+.btn-enviar-whats {
+  width: 100%;
+  padding: 16px 22px;
+  border-radius: 14px;
+  border: none;
+  background: linear-gradient(135deg, #1a5c2e, #128c40, #25d366);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: var(--transition);
+  box-shadow: 0 8px 28px rgba(37,211,102,0.3);
+  margin-bottom: 10px;
+}
+
+.btn-enviar-whats:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(37,211,102,0.45);
+  background: linear-gradient(135deg, #1d6633, #15a349, #2ee870);
+}
+
+.btn-enviar-whats:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-limpar {
+  width: 100%;
+  background: none;
+  border: 1px solid rgba(255,100,100,0.2);
+  color: rgba(255,100,100,0.5);
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: 0.05em;
+}
+
+.btn-limpar:hover {
+  border-color: rgba(255,100,100,0.5);
+  color: rgba(255,100,100,0.85);
+  background: rgba(255,100,100,0.05);
+}
+
+/* ─── TOAST ─── */
+.toast {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: linear-gradient(135deg, #1a1409, #0c0a04);
+  border: 1px solid var(--gold);
+  color: var(--gold-2);
+  padding: 12px 22px;
+  border-radius: 40px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  z-index: 300;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+  box-shadow: 0 8px 32px rgba(212,175,55,0.25);
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ─── LIGHTBOX ─── */
+.lb-overlay-img {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0);
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.3s ease;
+  cursor: pointer; z-index: 2;
+}
+.lb-overlay-img .lb-icon {
+  opacity: 0; transform: scale(0.7);
+  transition: all 0.3s ease;
+  color: #fff; font-size: 2rem;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+}
+.produto-img:hover .lb-overlay-img { background: rgba(0,0,0,0.42); }
+.produto-img:hover .lb-overlay-img .lb-icon { opacity: 1; transform: scale(1); }
+
+.lb-modal {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(0,0,0,0);
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none;
+  transition: background 0.35s ease;
+}
+.lb-modal.lb-ativo {
+  background: rgba(0,0,0,0.92);
+  pointer-events: all;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.lb-box {
+  position: relative;
+  display: flex; flex-direction: column; align-items: center; gap: 18px;
+  opacity: 0; transform: scale(0.88);
+  transition: all 0.35s cubic-bezier(0.16,1,0.3,1);
+  max-width: min(90vw, 680px);
+  padding: 0 16px;
+}
+.lb-modal.lb-ativo .lb-box { opacity: 1; transform: scale(1); }
+.lb-img-principal {
+  width: 100%; max-height: 72vh; object-fit: contain;
+  border-radius: 16px;
+  border: 1px solid rgba(212,175,55,0.25);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+  display: block;
+}
+.lb-info-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; gap: 16px;
+}
+.lb-nome {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem; font-weight: 700; color: #fcfbfa;
+}
+.lb-cat {
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.15em;
+  text-transform: uppercase; color: #d4af37;
+}
+.lb-acoes { display: flex; gap: 10px; flex-shrink: 0; }
+.lb-btn-w {
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: #fff;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  border: none; padding: 9px 16px; border-radius: 30px;
+  cursor: pointer; display: flex; align-items: center; gap: 7px;
+  transition: all 0.3s ease; white-space: nowrap;
+}
+.lb-btn-w:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(37,211,102,0.4); }
+.lb-btn-c {
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: #f5d97a;
+  background: transparent; border: 1px solid rgba(212,175,55,0.4);
+  padding: 9px 16px; border-radius: 30px;
+  cursor: pointer; display: flex; align-items: center; gap: 7px;
+  transition: all 0.3s ease; white-space: nowrap;
+}
+.lb-btn-c:hover { background: rgba(212,175,55,0.15); border-color: #d4af37; transform: scale(1.05); }
+.lb-fechar {
+  position: fixed; top: 20px; right: 24px;
+  width: 42px; height: 42px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.08);
+  color: #fff; font-size: 1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s ease; z-index: 501;
+}
+.lb-fechar:hover { background: rgba(212,175,55,0.2); border-color: #d4af37; color: #f5d97a; transform: scale(1.1); }
+.lb-dica { font-size: 0.72rem; color: rgba(255,255,255,0.3); letter-spacing: 0.08em; text-align: center; }
+@media (max-width: 600px) {
+  .lb-info-bar { flex-direction: column; align-items: flex-start; }
+  .lb-acoes { width: 100%; }
+  .lb-btn-w, .lb-btn-c { flex: 1; justify-content: center; }
+}
+
+/* ─── ANIMAÇÃO REVEAL ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 600px) {
+  .produtos-grid { grid-template-columns: 1fr; }
+  .carrinho-fab { left: 16px; bottom: 20px; padding: 12px 18px; }
+}
+
+/* ─── BTN ─── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 32px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: var(--transition);
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  letter-spacing: 0.02em;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #f5d97a, #d4af37 50%, #a8801f);
+  color: #060606;
+  box-shadow: 0 8px 30px -6px rgba(212, 175, 55, 0.5);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 40px -6px rgba(212, 175, 55, 0.7);
+}
+
+/* ─── FOOTER ─── */
+footer.elegant-footer {
+  background-color: #060606;
+  color: var(--text-main);
+  padding: 80px 0 30px;
+  border-top: 1px solid var(--line);
+  position: relative;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 0.9fr 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.footer-col { display: flex; flex-direction: column; gap: 16px; }
+
+.footer-logo-wrap { display: flex; align-items: center; gap: 14px; margin-bottom: 6px; }
+
+.footer-logo-img {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--gold);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+.footer-logo-text { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; letter-spacing: 0.5px; color: var(--text-main); }
+
+.footer-col h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  position: relative;
+  padding-bottom: 8px;
+}
+
+.footer-col h4::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 35px;
+  height: 1px;
+  background-color: var(--gold);
+}
+
+.footer-col p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; font-weight: 400; }
+
+.footer-links-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+
+.footer-links-list li a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: var(--transition);
+}
+
+.footer-links-list li a i { font-size: 0.95rem; color: var(--gold); width: 16px; text-align: center; }
+.footer-links-list li a:hover { color: var(--gold); transform: translateX(4px); }
+
+.footer-social-icons { display: flex; gap: 12px; margin-top: 8px; }
+
+.footer-social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--border-gold);
+  color: var(--gold);
+  font-size: 1rem;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer-social-icons a:hover {
+  background: linear-gradient(135deg, #f5d97a, #d4af37);
+  color: #060606;
+  border-color: var(--gold);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+  transform: translateY(-3px);
+}
+
+.footer-qr-container { align-items: center; text-align: center; }
+
+.footer-qr-box {
+  background: #ffffff !important;
+  padding: 14px;
+  border-radius: 14px;
+  border: 2px solid var(--gold);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+  margin-bottom: 8px;
+  line-height: 0;
+}
+
+.footer-qr-box:hover { transform: scale(1.03); box-shadow: 0 15px 35px rgba(212, 175, 55, 0.3); }
+.footer-qr-box svg { display: block; width: 148px; height: 148px; border-radius: 4px; }
+.footer-qr-text { font-size: 0.78rem; color: var(--text-muted); margin-top: 6px; line-height: 1.4; }
+.footer-qr-btn { margin-top: 12px; padding: 8px 18px; font-size: 0.8rem; border-radius: 20px; }
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 30px;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 1100px) {
+  .footer-grid { grid-template-columns: repeat(3, 1fr); gap: 40px; }
+}
+
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+  .footer-logo-wrap { justify-content: center; }
+  .footer-col h4::after { left: 50%; transform: translateX(-50%); }
+  .footer-social-icons { justify-content: center; }
+}
+
+/* ─── NAVBAR ─── */
+.catalogo-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(6,6,6,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+  padding: 14px 0;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.nav-logo img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--gold);
+}
+
+.nav-logo span {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+  letter-spacing: 0.3px;
+}
+
+.nav-cart-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(212,175,55,0.08);
+  border: 1px solid var(--border-gold);
+  border-radius: 40px;
+  padding: 9px 18px;
+  color: var(--gold-2);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: 'Inter', sans-serif;
+}
+
+.nav-cart-btn:hover {
+  background: rgba(212,175,55,0.16);
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212,175,55,0.2);
+}
+
+.nav-cart-btn i { font-size: 1rem; color: var(--gold); }
+
+.nav-cart-badge {
+  background: linear-gradient(135deg, #f5d97a, #d4af37);
+  color: var(--black);
+  font-size: 0.62rem;
+  font-weight: 800;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: var(--transition);
+}
+
+.nav-cart-badge.visivel {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (max-width: 480px) {
+  .nav-logo span { display: none; }
+  .nav-cart-btn .cart-label { display: none; }
+  .nav-cart-btn { padding: 9px 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAVBAR ─── -->
+<nav class="catalogo-nav">
+  <div class="container nav-inner">
+    <a class="nav-logo" href="#">
+      <img src="https://fabianaju.github.io/otica-reserva-do-iguacu/logo.jpeg" alt="Óticas Precisão"/>
+      <span>Óticas Precisão <span class="gold-text">Virmond</span></span>
+    </a>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <button class="btn-tema" id="btn-tema" onclick="toggleTema()" title="Alternar tema" aria-label="Alternar entre modo claro e escuro">
+        <i class="fas fa-moon" id="tema-icon"></i>
+      </button>
+      <button class="nav-cart-btn" onclick="abrirCarrinho()">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="cart-label">Carrinho</span>
+        <span class="nav-cart-badge" id="nav-cart-badge">0</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── SEÇÃO CATÁLOGO ─── -->
+<section id="catalogo" style="padding: 40px 0 120px;">
+  <div class="container">
+
+    <div class="catalogo-header reveal">
+      <span class="tag"><i class="fas fa-star" style="font-size:.65rem;"></i> Coleção Exclusiva</span>
+      <h2 class="serif">
+        Nosso <span class="gold-text">Catálogo</span>
+      </h2>
+      <p>Adicione os produtos ao carrinho e finalize seu pedido diretamente pelo WhatsApp com um de nossos atendentes.</p>
+    </div>
+
+    <!-- FILTROS -->
+    <div class="filtros reveal">
+      <button class="filtro-btn ativo" data-cat="todos" onclick="filtrar(this)">Todos</button>
+      <button class="filtro-btn" data-cat="Armações" onclick="filtrar(this)">Armações</button>
+      <button class="filtro-btn" data-cat="Solar" onclick="filtrar(this)">Solar</button>
+      <button class="filtro-btn" data-cat="Relógios" onclick="filtrar(this)">Relógios</button>
+      <button class="filtro-btn" data-cat="Joias" onclick="filtrar(this)">Joias</button>
+      <button class="filtro-btn" data-cat="Alianças" onclick="filtrar(this)">Alianças</button>
+      <button class="filtro-btn" data-cat="Acessórios" onclick="filtrar(this)">Acessórios</button>
+    </div>
+
+    <!-- GRID PRODUTOS -->
+    <div class="produtos-grid" id="produtos-grid"></div>
+
+  </div>
+</section>
+
+<!-- ─── PAINEL CARRINHO ─── -->
+<div class="carrinho-overlay" id="carrinho-overlay" onclick="fecharCarrinhoFora(event)">
+  <aside class="carrinho-painel">
+
+    <div class="carrinho-head">
+      <div class="carrinho-title serif">
+        <i class="fas fa-shopping-bag"></i>
+        Meu Carrinho
+      </div>
+      <button class="btn-fechar" onclick="fecharCarrinho()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <div class="carrinho-lista" id="carrinho-lista">
+      <div class="carrinho-vazio" id="carrinho-vazio">
+        <span class="vazio-icon">🛍️</span>
+        <p>Seu carrinho está vazio.<br>Explore o catálogo e adicione produtos.</p>
+      </div>
+    </div>
+
+    <div class="carrinho-foot">
+      <div class="resumo-linha">
+        <span class="label">Itens no carrinho</span>
+        <span class="valor" id="itens-val">0 produto(s)</span>
+      </div>
+      <div class="resumo-linha total">
+        <span class="label">Total estimado</span>
+        <span class="valor" id="total-val" style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;background:linear-gradient(135deg,#f5d97a,#d4af37);-webkit-background-clip:text;background-clip:text;color:transparent;">A consultar</span>
+      </div>
+
+      <button class="btn-enviar-whats" id="btn-enviar-whats" onclick="enviarPedidoWhats()" disabled>
+        <i class="fab fa-whatsapp" style="font-size:1.2rem;"></i>
+        Finalizar no WhatsApp
+      </button>
+
+      <button class="btn-limpar" onclick="confirmarLimpar()">
+        <i class="fas fa-trash-alt"></i> Limpar carrinho
+      </button>
+    </div>
+
+  </aside>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- ─── LIGHTBOX ─── -->
+<div class="lb-modal" id="lb-modal" onclick="lbFecharFora(event)">
+  <button class="lb-fechar" onclick="lbFechar()"><i class="fas fa-times"></i></button>
+  <div class="lb-box">
+    <img class="lb-img-principal" id="lb-img" src="" alt="">
+    <div class="lb-info-bar">
+      <div>
+        <div class="lb-cat" id="lb-cat"></div>
+        <div class="lb-nome" id="lb-nome"></div>
+      </div>
+      <div class="lb-acoes">
+        <button class="lb-btn-w" id="lb-btn-w"><i class="fab fa-whatsapp"></i> Comprar</button>
+        <button class="lb-btn-c" id="lb-btn-c"><i class="fas fa-plus"></i> Carrinho</button>
+      </div>
+    </div>
+    <div class="lb-dica"><i class="fas fa-keyboard" style="margin-right:5px;"></i>Pressione ESC para fechar</div>
+  </div>
+</div>
+
+<footer class="elegant-footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-col">
+        <div class="footer-logo-wrap">
+          <img src="https://fabianaju.github.io/otica-reserva-do-iguacu/logo.jpeg" alt="Óticas Precisão" class="footer-logo-img"/>
+          <span class="footer-logo-text">Óticas Precisão <span class="gold-text">Virmond</span></span>
+        </div>
+        <p>Referência em saúde visual, sofisticação e estilo na região de Virmond - PR. Unindo a inovação das lentes de alta tecnologia ao cuidado humanizado que seus olhos merecem.</p>
+        <div class="footer-social-icons">
+          <a href="https://www.instagram.com/oticaprecisaovirmond/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://wa.me/5542998224827" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Canais de Contato</h4>
+        <ul class="footer-links-list">
+          <li><a href="https://wa.me/5542998224827" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> (42) 99822-4827</a></li>
+          <li><a href="tel:+5542998224827"><i class="fa-solid fa-phone"></i> (42) 99822-4827</a></li>
+          <li><a href="https://www.instagram.com/oticaprecisaovirmond/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-hashtag"></i> @oticaprecisaovirmond</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Nossas Lojas</h4>
+        <ul class="footer-links-list">
+          <li><a href="https://otica-campina-do-simao.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-location-dot"></i> Campina do Simão</a></li>
+          <li><a href="https://otica-cantagalo.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-location-dot"></i> Cantagalo</a></li>
+          <li><a href="https://otica-foz-do-jordao.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-location-dot"></i> Foz do Jordão</a></li>
+          <li><a href="https://otica-reserva-do-iguacu.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-location-dot"></i> Reserva do Iguaçu</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Nossa Sede</h4>
+        <ul class="footer-links-list">
+          <li><a href="https://maps.google.com/?q=Oticas+Precisao+Virmond+Centro+PR" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-location-dot"></i> Centro — Virmond (PR)</a></li>
+          <li><a href="https://oticaprecisaovirmond.vercel.app/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-house"></i> Voltar à Página Inicial</a></li>
+        </ul>
+        <p style="margin-top: 4px; font-size: 0.85rem;"><i class="fa-regular fa-clock" style="color: var(--gold); margin-right: 6px;"></i> Horários de Atendimento:<br>Seg a Sex: 08:00 às 18:00<br>Sábados: 08:30 às 11:30</p>
+      </div>
+
+      <div class="footer-col footer-qr-container">
+        <h4>Cartão Digital</h4>
+        <div class="footer-qr-box">
+          <svg id="qr-svg" xmlns="http://www.w3.org/2000/svg"></svg>
+        </div>
+        <p class="footer-qr-text">Aponte a câmera do celular para abrir nosso site oficial instantaneamente.</p>
+        <button class="btn btn-primary footer-qr-btn" onclick="baixarQR()"><i class="fa-solid fa-download"></i> Baixar QR</button>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      © <span id="ano"></span> <span class="gold-text">Óticas Precisão Virmond</span> — Todos os direitos reservados.
+    </div>
+  </div>
+</footer>
+
+<script>
+// ─── PRODUTOS ───
+const produtos = [
+  {
+    id: 2,
+    nome: "Ray-Ban Feminino Rose Gold",
+    categoria: "Solar",
+    desc: "Armação geométrica em acetato transparente rose gold com lentes degradê marrom. Elegante e feminino, combina com qualquer look. Proteção UV400 completa contra raios UVA e UVB.",
+    emoji: "😎",
+    imagem: "https://raw.githubusercontent.com/Fabianaju/oticaprecisaovirmond/main/oculosdesol1.jpeg",
+    topVendido: true
+  },
+  {
+    id: 5,
+    nome: "Colar Coração Quebra-Cabeça",
+    categoria: "Joias",
+    desc: "Par de colares em aço inox com pingente coração quebra-cabeça personalizado — cada peça leva um nome gravado e juntas formam um coração completo. O presente perfeito para casais.",
+    emoji: "💎",
+    imagem: "https://raw.githubusercontent.com/Fabianaju/oticaprecisaovirmond/main/colarquebracabeca.png",
+    topVendido: true
+  },
+  {
+    id: 6,
+    nome: "Ray-Ban Hexagonal Feminino",
+    categoria: "Solar",
+    desc: "Armação hexagonal em metal preto com lentes verdes clássicas. Estilo moderno e feminino com acabamento premium. Proteção 100% UV — elegância para o dia a dia.",
+    emoji: "🕶️",
+    imagem: "https://raw.githubusercontent.com/Fabianaju/oticaprecisaovirmond/main/oculosdesol2.jpeg",
+    topVendido: false
+  },
+  {
+    id: 18,
+    nome: "Limpa Lentes",
+    categoria: "Acessórios",
+    desc: "Solução de limpeza profissional para lentes ópticas e solares. Remove gordura e manchas com segurança.",
+    emoji: "🧴",
+    imagem: "https://raw.githubusercontent.com/Fabianaju/oticaprecisaovirmond/main/limpalente.jpeg",
+    topVendido: false
+  },
+  {
+    id: 10,
+    nome: "Relógio Smart 1",
+    categoria: "Relógios",
+    desc: "Relógio inteligente com design moderno, monitoramento de saúde e longa duração de bateria.",
+    emoji: "⌚",
+    imagem: "https://raw.githubusercontent.com/Fabianaju/oticaprecisaovirmond/main/smart1.jpeg",
+    topVendido: true
+  },
+  {
+    id: 11,
+    nome: "Relógio Smart 2",
+    categoria: "Relógios",
+    desc: "Smartwatch elegante com tela AMOLED, GPS e monitoramento completo de atividades.",
+    emoji: "⌚",
+    imagem: "https://raw.githubusercontent.com/Fabianaju/oticaprecisaovirmond/main/smart2.jpeg",
+    topVendido: false
+  },
+  {
+    id: 12,
+    nome: "Relógio Clássico",
+    categoria: "Relógios",
+    desc: "Modelo sofisticado com design atemporal. Perfeito para ocasiões especiais e uso diário.",
+    emoji: "⌚",
+    imagem: "https://raw.githubusercontent.com/Fabianaju/oticaprecisaovirmond/main/relogio1.jpeg",
+    topVendido: false
+  },
+  {
+    id: 13,
+    nome: "Relógio Elegante",
+    categoria: "Relógios",
+    desc: "Elegância e precisão em um único relógio. Acabamento premium com detalhes exclusivos.",
+    emoji: "⌚",
+    imagem: "https://raw.githubusercontent.com/Fabianaju/oticaprecisaovirmond/main/relogio2.jpeg",
+    topVendido: false
+  },
+  {
+    id: 14,
+    nome: "Relógio Moderno",
+    categoria: "Relógios",
+    desc: "Design moderno com materiais de alta qualidade. Estilo e funcionalidade para o dia a dia.",
+    emoji: "⌚",
+    imagem: "https://raw.githubusercontent.com/Fabianaju/oticaprecisaovirmond/main/relogio3.jpeg",
+    topVendido: false
+  },
+  {
+    id: 15,
+    nome: "Armação 1",
+    categoria: "Armações",
+    desc: "Armação sofisticada com design moderno e acabamento premium. Conforto e estilo para o dia a dia.",
+    emoji: "👓",
+    imagem: "https://raw.githubusercontent.com/Fabianaju/oticaprecisaovirmond/main/armacao1.jpeg",
+    topVendido: false
+  },
+  {
+    id: 16,
+    nome: "Armação 2",
+    categoria: "Armações",
+    desc: "Design elegante com materiais de alta qualidade. Leveza e durabilidade em um único modelo.",
+    emoji: "👓",
+    imagem: "https://raw.githubusercontent.com/Fabianaju/oticaprecisaovirmond/main/armacao2.jpeg",
+    topVendido: false
+  },
+  {
+    id: 17,
+    nome: "Armação 3",
+    categoria: "Armações",
+    desc: "Estilo contemporâneo com acabamento refinado. Perfeita para complementar qualquer visual.",
+    emoji: "👓",
+    imagem: "https://raw.githubusercontent.com/Fabianaju/oticaprecisaovirmond/main/armacao3.jpeg",
+    topVendido: false
+  },
+  {
+    id: 21,
+    nome: "Armação Clip-On 2 em 1",
+    categoria: "Armações",
+    desc: "Armação feminina rose com clip-on solar acoplável — use como óculos de grau ou solar na mesma peça. Prática, estilosa e perfeita para o dia a dia.",
+    emoji: "👓",
+    imagem: "https://raw.githubusercontent.com/Fabianaju/oticaprecisaovirmond/main/clipon1.jpeg",
+    topVendido: false
+  },
+  {
+    id: 22,
+    nome: "Armação Clip-On Preta 2 em 1",
+    categoria: "Armações",
+    desc: "Armação feminina em metal preto com clip-on solar acoplável — use como óculos de grau ou solar na mesma peça. Estilo sofisticado e prático para o dia a dia.",
+    emoji: "👓",
+    imagem: "https://raw.githubusercontent.com/Fabianaju/oticaprecisaovirmond/main/clipon2.jpeg",
+    topVendido: false
+  },
+  {
+    id: 23,
+    nome: "Armação Clip-On Cristal 2 em 1",
+    categoria: "Armações",
+    desc: "Armação feminina quadrada em acetato cristal transparente com clip-on solar acoplável — delicada e moderna. Use como óculos de grau ou solar na mesma peça.",
+    emoji: "👓",
+    imagem: "https://raw.githubusercontent.com/Fabianaju/oticaprecisaovirmond/main/clipon3.jpeg",
+    topVendido: false
+  },
+  {
+    id: 19,
+    nome: "Par de Alianças Prata Fina",
+    categoria: "Alianças",
+    desc: "Par de alianças em prata fina de 2,5mm com acabamento polido. Delicadas e elegantes, perfeitas para noivado ou casamento. Acompanha estojo dourado.",
+    emoji: "💍",
+    imagem: "https://raw.githubusercontent.com/Fabianaju/oticaprecisaovirmond/main/alianca1.jpeg",
+    topVendido: false
+  },
+  {
+    id: 20,
+    nome: "Aliança Prata Revestida a Ouro 5mm",
+    categoria: "Alianças",
+    desc: "Aliança em prata 925 com revestimento a ouro 18k, largura 5mm e acabamento polido liso. Clássica e elegante, ideal para casamento ou uso diário. Acompanha estojo coração.",
+    emoji: "💍",
+    imagem: "https://raw.githubusercontent.com/Fabianaju/oticaprecisaovirmond/main/alianca2.png",
+    topVendido: false
+  },
+  {
+    id: 25,
+    nome: "Aliança Prata Revestida a Ouro 3mm",
+    categoria: "Alianças",
+    desc: "Aliança de prata revestida a ouro com largura de 3mm e acabamento polido liso. Delicada e sofisticada, perfeita para noivado ou casamento. Acompanha estojo coração.",
+    emoji: "💍",
+    imagem: "https://raw.githubusercontent.com/Fabianaju/oticaprecisaovirmond/main/alianca3.png",
+    topVendido: false
+  }
+];
+
+let carrinho = JSON.parse(localStorage.getItem('otica_carrinho') || '[]');
+let catAtual = "todos";
+
+// ─── SALVAR CARRINHO ───
+function salvarCarrinho() {
+  localStorage.setItem('otica_carrinho', JSON.stringify(carrinho));
+}
+
+// ─── FORMATAR PREÇO ───
+function fmt(v) {
+  return v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+}
+
+// ─── RENDER GRID ───
+function renderGrid(cat) {
+  const grid = document.getElementById('produtos-grid');
+  const lista = cat === 'todos' ? produtos : produtos.filter(p => p.categoria === cat);
+
+  grid.innerHTML = lista.map(p => {
+    const noCart = carrinho.find(c => c.id === p.id);
+    const imgHtml = p.imagem
+      ? `<img src="${p.imagem}" alt="${p.nome}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" /><span class="produto-emoji" style="display:none">${p.emoji}</span>`
+      : `<span class="produto-emoji">${p.emoji}</span>`;
+    return `
+    <div class="produto-card reveal" data-id="${p.id}">
+      ${p.topVendido ? `<span class="badge-top"><i class="fas fa-fire"></i> Mais Vendido</span>` : ''}
+      <div class="produto-img" style="cursor:pointer;" onclick="lbAbrir(${p.id})">
+        ${imgHtml}
+        <div class="lb-overlay-img"><i class="fas fa-search-plus lb-icon"></i></div>
+      </div>
+      <div class="produto-info">
+        <div class="produto-categoria">${p.categoria}</div>
+        <div class="produto-nome">${p.nome}</div>
+        <div class="produto-desc">${p.desc}</div>
+        <div class="produto-rodape">
+          <div class="card-btns" style="flex-direction:row; align-items:center; width:100%; justify-content:flex-end; gap:8px;">
+            <button class="btn-whats-rapido" onclick="comprarRapido(${p.id})">
+              <i class="fab fa-whatsapp"></i> Comprar
+            </button>
+            <button class="btn-add-carrinho ${noCart ? 'adicionado' : ''}" id="btn-add-${p.id}" onclick="addCarrinho(${p.id})">
+              <i class="fas fa-${noCart ? 'check' : 'plus'}"></i>
+              ${noCart ? 'No carrinho' : 'Carrinho'}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  // Reveal
+  requestAnimationFrame(() => {
+    document.querySelectorAll('.produto-card.reveal').forEach((el, i) => {
+      setTimeout(() => el.classList.add('in'), i * 70);
+    });
+  });
+}
+
+// ─── FILTRAR ───
+function filtrar(btn) {
+  document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('ativo'));
+  btn.classList.add('ativo');
+  catAtual = btn.dataset.cat;
+  renderGrid(catAtual);
+}
+
+// ─── ADD CARRINHO ───
+function addCarrinho(id) {
+  const p = produtos.find(x => x.id === id);
+  const exist = carrinho.find(x => x.id === id);
+
+  if (exist) {
+    exist.qty++;
+  } else {
+    carrinho.push({ ...p, qty: 1 });
+  }
+
+  atualizarBadge();
+  renderCarrinho();
+  atualizarBtnCard(id, true);
+  showToast(`✓ ${p.nome} adicionado ao carrinho`);
+  salvarCarrinho();
+}
+
+function atualizarBtnCard(id, add) {
+  const btn = document.getElementById(`btn-add-${id}`);
+  if (!btn) return;
+  if (add) {
+    btn.innerHTML = `<i class="fas fa-check"></i> No carrinho`;
+    btn.classList.add('adicionado');
+  } else {
+    btn.innerHTML = `<i class="fas fa-plus"></i> Carrinho`;
+    btn.classList.remove('adicionado');
+  }
+}
+
+// ─── COMPRAR RÁPIDO ───
+function comprarRapido(id) {
+  const p = produtos.find(x => x.id === id);
+  const msg = `Olá! Gostaria de saber mais sobre:\n\n` +
+    `*${p.nome}*\n` +
+    `Categoria: ${p.categoria}\n\n` +
+    `Pode me ajudar com mais informações?`;
+  window.open(`https://wa.me/5542998224827?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+// ─── ATUALIZAR BADGE ───
+function atualizarBadge() {
+  const total = carrinho.reduce((s, i) => s + i.qty, 0);
+  const navBadge = document.getElementById('nav-cart-badge');
+  navBadge.textContent = total;
+
+  if (total > 0) {
+    navBadge.classList.add('visivel');
+  } else {
+    navBadge.classList.remove('visivel');
+  }
+}
+
+// ─── RENDER CARRINHO ───
+function renderCarrinho() {
+  const lista = document.getElementById('carrinho-lista');
+  const vazio = document.getElementById('carrinho-vazio');
+  const btnEnviar = document.getElementById('btn-enviar-whats');
+
+  if (carrinho.length === 0) {
+    lista.innerHTML = '';
+    lista.appendChild(vazio);
+    vazio.style.display = 'flex';
+    btnEnviar.disabled = true;
+    atualizarTotais();
+    return;
+  }
+
+  btnEnviar.disabled = false;
+
+  lista.innerHTML = carrinho.map(item => {
+    const temPreco = item.preco && item.preco > 0;
+    const precoUnitario = temPreco ? fmt(item.preco) : 'A consultar';
+    const precoSubtotal = temPreco ? fmt(item.preco * item.qty) : '';
+    return `
+    <div class="carrinho-item" id="item-${item.id}">
+      <div class="item-emoji-mini">${item.imagem ? `<img src="${item.imagem}" style="width:100%;height:100%;object-fit:cover;border-radius:8px;" onerror="this.style.display='none'">` : item.emoji}</div>
+      <div class="item-info">
+        <div class="item-nome">${item.nome}</div>
+        <div class="item-cat">${item.categoria}</div>
+        <div class="item-preco">${precoUnitario}</div>
+      </div>
+      <div class="item-qty">
+        <button class="qty-btn" onclick="alterarQty(${item.id}, -1)"><i class="fas fa-minus"></i></button>
+        <span class="qty-num">${item.qty}</span>
+        <button class="qty-btn" onclick="alterarQty(${item.id}, 1)"><i class="fas fa-plus"></i></button>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;flex-shrink:0;">
+        ${precoSubtotal ? `<span class="item-subtotal">= ${precoSubtotal}</span>` : ''}
+        <button class="btn-remover" onclick="removerItemAnimado(${item.id})" title="Remover">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+      </div>
+    </div>
+  `}).join('');
+
+  atualizarTotais();
+}
+
+function atualizarTotais() {
+  const itens = carrinho.reduce((s, i) => s + i.qty, 0);
+  document.getElementById('itens-val').textContent = `${itens} produto(s)`;
+
+  const totalEl = document.getElementById('total-val');
+  const todosTemPreco = carrinho.every(i => i.preco && i.preco > 0);
+  const algumTemPreco = carrinho.some(i => i.preco && i.preco > 0);
+
+  if (carrinho.length === 0) {
+    totalEl.textContent = 'A consultar';
+  } else if (todosTemPreco) {
+    const total = carrinho.reduce((s, i) => s + i.preco * i.qty, 0);
+    totalEl.textContent = fmt(total);
+  } else if (algumTemPreco) {
+    const parcial = carrinho.filter(i => i.preco).reduce((s, i) => s + i.preco * i.qty, 0);
+    totalEl.textContent = fmt(parcial) + ' + consulta';
+  } else {
+    totalEl.textContent = 'A consultar';
+  }
+}
+
+// ─── ALTERAR QUANTIDADE ───
+function alterarQty(id, delta) {
+  const item = carrinho.find(x => x.id === id);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) {
+    removerItemAnimado(id);
+    return;
+  }
+  salvarCarrinho();
+  atualizarBadge();
+  renderCarrinho();
+}
+
+// ─── REMOVER COM ANIMAÇÃO ───
+function removerItemAnimado(id) {
+  const el = document.getElementById(`item-${id}`);
+  if (el) {
+    el.classList.add('removendo');
+    el.addEventListener('animationend', () => removerItem(id), { once: true });
+  } else {
+    removerItem(id);
+  }
+}
+
+// ─── REMOVER ITEM ───
+function removerItem(id) {
+  carrinho = carrinho.filter(x => x.id !== id);
+  salvarCarrinho();
+  atualizarBadge();
+  renderCarrinho();
+  atualizarBtnCard(id, false);
+}
+
+// ─── CONFIRMAR LIMPAR ───
+function confirmarLimpar() {
+  if (carrinho.length === 0) return;
+  const btn = document.getElementById('btn-limpar-confirmar') || (() => {
+    // Mostra confirmação inline no botão
+    const btnLimpar = document.querySelector('.btn-limpar');
+    if (!btnLimpar) return null;
+    const textoOriginal = btnLimpar.innerHTML;
+    btnLimpar.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Confirmar limpeza?';
+    btnLimpar.style.borderColor = 'rgba(255,100,100,0.7)';
+    btnLimpar.style.color = 'rgba(255,100,100,0.9)';
+    btnLimpar.onclick = () => {
+      limparCarrinho();
+      btnLimpar.innerHTML = textoOriginal;
+      btnLimpar.style.borderColor = '';
+      btnLimpar.style.color = '';
+      btnLimpar.onclick = () => confirmarLimpar();
+    };
+    setTimeout(() => {
+      if (btnLimpar.innerHTML.includes('Confirmar')) {
+        btnLimpar.innerHTML = textoOriginal;
+        btnLimpar.style.borderColor = '';
+        btnLimpar.style.color = '';
+        btnLimpar.onclick = () => confirmarLimpar();
+      }
+    }, 3000);
+    return btnLimpar;
+  })();
+}
+
+// ─── LIMPAR CARRINHO ───
+function limparCarrinho() {
+  carrinho = [];
+  salvarCarrinho();
+  atualizarBadge();
+  renderCarrinho();
+  document.querySelectorAll('.btn-add-carrinho').forEach(btn => {
+    const id = parseInt(btn.id.replace('btn-add-', ''));
+    atualizarBtnCard(id, false);
+  });
+}
+
+// ─── ABRIR / FECHAR CARRINHO ───
+function abrirCarrinho() {
+  const ov = document.getElementById('carrinho-overlay');
+  ov.style.display = 'block';
+  requestAnimationFrame(() => ov.classList.add('ativo'));
+  document.body.style.overflow = 'hidden';
+  renderCarrinho();
+}
+
+function fecharCarrinho() {
+  const ov = document.getElementById('carrinho-overlay');
+  ov.classList.remove('ativo');
+  setTimeout(() => { ov.style.display = 'none'; }, 400);
+  document.body.style.overflow = '';
+}
+
+function fecharCarrinhoFora(e) {
+  if (e.target === document.getElementById('carrinho-overlay')) fecharCarrinho();
+}
+
+// ─── ENVIAR PEDIDO WHATSAPP ───
+function enviarPedidoWhats() {
+  if (carrinho.length === 0) return;
+
+  const itens = carrinho.map(i =>
+    `▸ *${i.nome}* (${i.categoria}) × ${i.qty}`
+  ).join('\n');
+
+  const qtdTotal = carrinho.reduce((s, i) => s + i.qty, 0);
+
+  const msg =
+    `Olá! Gostaria de fazer um pedido na *Ótica Precisão de Virmond* 🕶️\n\n` +
+    `📋 *Meu Pedido:*\n${itens}\n\n` +
+    `🛍️ Total de itens: ${qtdTotal}\n\n` +
+    `Poderia me ajudar a finalizar? Obrigado!`;
+
+  window.open(`https://wa.me/5542998224827?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+// ─── TEMA CLARO / ESCURO ───
+function toggleTema() {
+  const claro = document.body.classList.toggle('light');
+  const icon = document.getElementById('tema-icon');
+  icon.className = claro ? 'fas fa-sun' : 'fas fa-moon';
+  localStorage.setItem('otica_tema', claro ? 'light' : 'dark');
+}
+
+function initTema() {
+  const salvo = localStorage.getItem('otica_tema');
+  const prefereClaro = window.matchMedia('(prefers-color-scheme: light)').matches;
+  if (salvo === 'light' || (!salvo && prefereClaro)) {
+    document.body.classList.add('light');
+    document.getElementById('tema-icon').className = 'fas fa-sun';
+  }
+}
+
+// ─── TOAST ───
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// ─── LIGHTBOX ───
+function lbAbrir(id) {
+  const p = produtos.find(x => x.id === id);
+  if (!p || !p.imagem) return;
+  document.getElementById('lb-img').src = p.imagem;
+  document.getElementById('lb-img').alt = p.nome;
+  document.getElementById('lb-nome').textContent = p.nome;
+  document.getElementById('lb-cat').textContent = p.categoria;
+  document.getElementById('lb-btn-w').onclick = () => comprarRapido(id);
+  document.getElementById('lb-btn-c').onclick = () => { addCarrinho(id); lbFechar(); };
+  const modal = document.getElementById('lb-modal');
+  modal.style.display = 'flex';
+  requestAnimationFrame(() => modal.classList.add('lb-ativo'));
+  document.body.style.overflow = 'hidden';
+}
+
+function lbFechar() {
+  const modal = document.getElementById('lb-modal');
+  modal.classList.remove('lb-ativo');
+  setTimeout(() => { modal.style.display = 'none'; }, 350);
+  document.body.style.overflow = '';
+}
+
+function lbFecharFora(e) {
+  if (e.target === document.getElementById('lb-modal')) lbFechar();
+}
+
+// ─── FECHAR COM ESC ───
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    const lb = document.getElementById('lb-modal');
+    if (lb && lb.classList.contains('lb-ativo')) { lbFechar(); return; }
+    const ov = document.getElementById('carrinho-overlay');
+    if (ov && ov.classList.contains('ativo')) fecharCarrinho();
+  }
+});
+
+// ─── REVEAL ───
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// ─── INIT ───
+renderGrid('todos');
+atualizarBadge();
+initTema();
+initTema();
+
+document.getElementById('ano').textContent = new Date().getFullYear();
+
+  // ─── QR CODE ───
+  const QR_TARGET_URL = "https://oticaprecisaovirmond.vercel.app/";
+
+  (function buildQR() {
+    const s = document.createElement('script');
+    s.src = 'https://unpkg.com/qrcode-generator@1.4.4/qrcode.js';
+    s.onload = function () {
+      try {
+        const qr = qrcode(0, 'M');
+        qr.addData(QR_TARGET_URL);
+        qr.make();
+
+        const quietZone = 4;
+        const mod = qr.getModuleCount();
+        const totalMod = mod + quietZone * 2;
+        const cell = 200 / totalMod;
+        const size = totalMod * cell;
+        const offset = quietZone * cell;
+
+        const svg = document.getElementById('qr-svg');
+        svg.setAttribute('width', size);
+        svg.setAttribute('height', size);
+        svg.setAttribute('viewBox', `0 0 ${size} ${size}`);
+
+        const bg = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        bg.setAttribute('width', size);
+        bg.setAttribute('height', size);
+        bg.setAttribute('fill', '#ffffff');
+        svg.appendChild(bg);
+
+        for (let r = 0; r < mod; r++) {
+          for (let c = 0; c < mod; c++) {
+            if (qr.isDark(r, c)) {
+              const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+              rect.setAttribute('x', offset + c * cell);
+              rect.setAttribute('y', offset + r * cell);
+              rect.setAttribute('width', cell + 0.1);
+              rect.setAttribute('height', cell + 0.1);
+              rect.setAttribute('fill', '#060606');
+              svg.appendChild(rect);
+            }
+          }
+        }
+      } catch (err) {
+        console.error('Erro ao processar QR Code:', err);
+      }
+    };
+    s.onerror = function () {
+      const el = document.getElementById('qr-svg');
+      if (el) {
+        el.innerHTML = `<foreignObject width="200" height="200"><div xmlns="http://www.w3.org/1999/xhtml" style="display:flex;align-items:center;justify-content:center;height:100%;text-align:center;"><a href="${QR_TARGET_URL}" target="_blank" style="color:#d4af37;font-weight:600;text-decoration:underline;font-size:14px;">Acesse o site aqui</a></div></foreignObject>`;
+      }
+    };
+    document.head.appendChild(s);
+  })();
+
+  function baixarQR() {
+    const svg = document.getElementById('qr-svg');
+    const svgString = new XMLSerializer().serializeToString(svg);
+    const svgBlob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
+    const blobURL = URL.createObjectURL(svgBlob);
+
+    const image = new Image();
+    image.onload = function () {
+      const canvas = document.createElement('canvas');
+      canvas.width = 400;
+      canvas.height = 400;
+      const context = canvas.getContext('2d');
+      context.drawImage(image, 0, 0, 400, 400);
+
+      const png = canvas.toDataURL('image/png');
+      const downloadLink = document.createElement('a');
+      downloadLink.href = png;
+      downloadLink.download = 'qrcode-otica-precisao-virmond.png';
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+      URL.revokeObjectURL(blobURL);
+    };
+    image.src = blobURL;
+  }
+</script>
+
+</body>
+</html>
